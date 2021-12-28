@@ -1,6 +1,7 @@
 import NavBar from "./components/navBar/NavBar"
 import ItemListContainer from "./components/listaItems/ItemListContainer"
 import ItemDetailContainer from "./components/detailItems/ItemDetailContainer";
+import Error from "./components/Error/Error";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
                 <Route path="/" element={<ItemListContainer />} />
                 <Route path="/categoria/:idCategory" element={<ItemListContainer />} />
                 <Route path="/item/:id" element={<ItemDetailContainer />} />
+                <Route path="/cart" element={<Error />} />
             </Routes>
         </BrowserRouter>
     )

@@ -1,11 +1,15 @@
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ItemCount from './ItemCount';
+import { useState } from 'react';
 
 const ItemDetail = ({ item }) => {
 
     const stock = 5;
     const initial = 0;
+    var itemCountDisable = true;
+
+    const [show, setShow] = useState(true);
 
     function onAdd(numero) {
         if (stock > 0) {
@@ -20,19 +24,34 @@ const ItemDetail = ({ item }) => {
                 progress: undefined,
             });
         }
+        setShow(false);
     }
 
 
-    return (
-        <div className="item">
-            <p>Nombre: {item.title}</p>
-            <p>Descripcion: {item.description}</p>
-            <p>Precio: {item.price}</p>
-            <img src={item.pictureUrl} alt="productImage" height="300px"></img>
-            <ItemCount stock={stock} initial={initial} onAdd={onAdd} />
-            <ToastContainer />
-        </div>
-    )
+    if (show) {
+        return (
+            <div className="item">
+                <p>Nombre: {item.title}</p>
+                <p>Descripcion: {item.description}</p>
+                <p>Precio: {item.price}</p>
+                <img src={item.pictureUrl} alt="productImage" height="300px"></img>
+                <ItemCount stock={stock} initial={initial} onAdd={onAdd} />
+            </div>
+        )
+    }
+    else {
+        return (
+            <div className="item">
+                <p>Nombre: {item.title}</p>
+                <p>Descripcion: {item.description}</p>
+                <p>Precio: {item.price}</p>
+                <img src={item.pictureUrl} alt="productImage" height="300px"></img>
+                <ToastContainer />
+            </div>
+        )
+    }
+
+
 }
 
 export default ItemDetail
