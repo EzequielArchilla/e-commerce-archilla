@@ -2,6 +2,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ItemCount from './ItemCount';
 import { useState } from 'react';
+import { useContexto } from '../context/CartContext';
 
 const ItemDetail = ({ item }) => {
 
@@ -10,9 +11,12 @@ const ItemDetail = ({ item }) => {
     var itemCountDisable = true;
 
     const [show, setShow] = useState(true);
+    const { addItem } = useContexto();
 
     function onAdd(numero) {
         if (stock > 0) {
+            addItem(item, numero);
+
             let message = "Se agregaron " + numero + " items al carrito."
             toast.success(message, {
                 position: "top-center",

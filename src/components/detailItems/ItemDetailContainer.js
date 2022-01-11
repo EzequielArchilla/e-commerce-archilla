@@ -142,7 +142,7 @@ const ItemDetailContainer = () => {
                     }
                 })
                 res(filteredProducts)
-            }, 2000)
+            }, 500)
         });
 
         promesa.then((producto) => {

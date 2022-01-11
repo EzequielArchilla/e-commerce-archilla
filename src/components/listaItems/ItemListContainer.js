@@ -136,6 +136,8 @@ const ItemListContainer = ({ greeting }) => {
     const [list, setLista] = useState([]);
 
     useEffect(() => {
+        setLista([]);
+
         const promise = new Promise((res, rej) => {
             setTimeout(() => {
                 res(initialProducts)
@@ -143,8 +145,6 @@ const ItemListContainer = ({ greeting }) => {
         })
 
         promise.then((productos) => {
-            console.log(idCategory);
-
             if (idCategory != undefined) {
                 filteredProducts = productos.filter(item =>
                     item.category === idCategory);

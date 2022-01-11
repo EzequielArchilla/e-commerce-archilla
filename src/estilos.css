@@ -18,3 +18,13 @@ nav{
     margin:5px;
     padding:5px;
 }
+
+.cart-bottom{
+    display:flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    padding: 3px;
+    margin: 30px 15px 0px 15px;
+    background-color: grey;
+    color:white;
+}
