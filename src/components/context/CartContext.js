@@ -11,6 +11,7 @@ export const useContexto = () => {
 const CustomProvider = ({ children }) => {
 
     const [totalQuantity, setTotalQuantity] = useState(0);
+    const [totalPrice, setTotalPrice] = useState(0);
     const [cart, setCart] = useState([])
 
     const addItem = (item, quantity) => {
@@ -24,14 +25,13 @@ const CustomProvider = ({ children }) => {
             })
             setCart(array);
             setTotalQuantity(totalQuantity + quantity);
-            console.log(totalQuantity);
+            setTotalPrice(totalPrice + (quantity * item.price));
         }
         else {
             array.push({ ...item, quantity: quantity });
             setCart(array);
-            console.log("-", totalQuantity);
-            console.log("-", quantity);
             setTotalQuantity(totalQuantity + quantity);
+            setTotalPrice(totalPrice + (quantity * item.price));
         }
     }
 
@@ -40,6 +40,8 @@ const CustomProvider = ({ children }) => {
         array.forEach((item) => {
             if (item.id === itemId) {
                 array.pop(item);
+                setTotalPrice(totalPrice - (item.price * item.quantity));
+                setTotalQuantity(totalQuantity - item.quantity);
             }
         })
         setCart(array);
@@ -47,6 +49,8 @@ const CustomProvider = ({ children }) => {
 
     const clear = () => {
         setCart([]);
+        setTotalQuantity(0);
+        setTotalPrice(0);
     }
 
     const isInCart = (id) => {
@@ -54,6 +58,7 @@ const CustomProvider = ({ children }) => {
     }
 
     const contextValue = {
+        totalPrice,
         totalQuantity,
         cart,
         addItem,
