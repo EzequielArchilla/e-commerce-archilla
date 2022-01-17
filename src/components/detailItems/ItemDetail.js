@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const ItemDetail = ({ item }) => {
 
     const stock = 5;
-    const initial = 0;
+    const initial = 1;
     var itemCountDisable = true;
 
     const [show, setShow] = useState(true);
