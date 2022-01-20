@@ -15,7 +15,6 @@ const ItemListContainer = ({ greeting }) => {
     var filteredProducts = [];
 
     const [list, setLista] = useState([]);
-    console.log(list);
 
     useEffect(() => {
         setLista([]);

@@ -17,8 +17,6 @@ const CustomProvider = ({ children }) => {
     const addItem = (item, quantity) => {
         let array = cart.slice();
 
-        console.log(item, "    ", quantity);
-
         if (isInCart(item.id)) {
             array.forEach((itemA) => {
                 if (itemA.id === item.id) {

@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 const ItemDetail = ({ item }) => {
 
     const stock = 5;
-    const initial = 1;
     var itemCountDisable = true;
 
     const [show, setShow] = useState(true);
@@ -38,15 +37,15 @@ const ItemDetail = ({ item }) => {
             <p>Titulo: {item.title}</p>
             <p>Precio: ${item.price}</p>
             <img src={item.pictureUrl} alt="productImage" height="250px"></img>
-            <ItemCount stock={stock} initial={initial} onAdd={onAdd} />
+            <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
         </div>
         : <div className="item expand">
             <p>Banda: {item.band}</p>
             <p>Titulo: {item.title}</p>
             <p>Precio: ${item.price}</p>
             <img src={item.pictureUrl} alt="productImage" height="250px"></img>
-            <Link to="/cart">
-                <button>Terminar mi compra</button>
+            <Link to="/">
+                <button>Seguir comprando</button>
             </Link>
             <ToastContainer />
         </div>
