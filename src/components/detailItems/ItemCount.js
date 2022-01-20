@@ -11,18 +11,26 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     }
 
     const restar = () => {
-        if (cantidad > 0) {
+        if (cantidad > 1) {
             setCantidad(cantidad - 1);
         }
     }
 
     return (
-        <div className="container">
+        <div className="count">
             <p>Stock disponible: {stock}</p>
-            <p>Items: {cantidad}</p>
-            <button onClick={sumar}>+</button>
-            <button onClick={restar}>-</button>
-            <button onClick={() => onAdd(cantidad)}>Agregar</button>
+            <div className="number-picker">
+                <button onClick={sumar}>
+                    <span class="material-icons">add</span>
+                </button>
+                <p>Items: {cantidad}</p>
+                <button onClick={restar}>
+                    <span class="material-icons">remove</span>
+                </button>
+            </div>
+            <button onClick={() => onAdd(cantidad)}>
+                <span class="material-icons">add_shopping_cart</span>
+            </button>
         </div>
     )
 }

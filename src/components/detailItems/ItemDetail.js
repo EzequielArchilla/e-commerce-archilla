@@ -33,18 +33,18 @@ const ItemDetail = ({ item }) => {
     }
 
     return show ?
-        <div className="item">
-            <p>Nombre: {item.title}</p>
-            <p>Descripcion: {item.description}</p>
-            <p>Precio: {item.price}</p>
-            <img src={item.pictureUrl} alt="productImage" height="300px"></img>
+        <div className="item expand">
+            <p>Banda: {item.band}</p>
+            <p>Titulo: {item.title}</p>
+            <p>Precio: ${item.price}</p>
+            <img src={item.pictureUrl} alt="productImage" height="250px"></img>
             <ItemCount stock={stock} initial={initial} onAdd={onAdd} />
         </div>
-        : <div className="item">
-            <p>Nombre: {item.title}</p>
-            <p>Descripcion: {item.description}</p>
-            <p>Precio: {item.price}</p>
-            <img src={item.pictureUrl} alt="productImage" height="300px"></img>
+        : <div className="item expand">
+            <p>Banda: {item.band}</p>
+            <p>Titulo: {item.title}</p>
+            <p>Precio: ${item.price}</p>
+            <img src={item.pictureUrl} alt="productImage" height="250px"></img>
             <Link to="/cart">
                 <button>Terminar mi compra</button>
             </Link>

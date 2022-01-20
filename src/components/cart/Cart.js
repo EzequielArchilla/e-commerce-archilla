@@ -14,16 +14,23 @@ const Cart = () => {
             {cart.length > 0 ?
                 <div>
                     {cart.map((item, index) => {
-                        return <div className="item" key={index}>
-                            <p>Nombre: {item.title}</p>
-                            <p>Quantity: {item.quantity}</p>
-                            <img src={item.pictureUrl} height="250"></img>
+                        return <div className="cart-item" key={index}>
+                            <div className="cart-item-data">
+                                <p>Banda: {item.band}</p>
+                                <p>Titulo: {item.title}</p>
+                                <p>Quantity: {item.quantity}</p>
+                            </div>
+                            <div className="cart-item-image">
+                                <img src={item.pictureUrl} height="150"></img>
+                            </div>
+                            <br />
                             <button onClick={() => removeItem(item.id)}>Remover</button>
                         </div>
                     })}
 
                     <div className="cart-bottom">
                         <h4>Total: {totalPrice}</h4>
+                        <br />
                         <button onClick={clear}>Vaciar carrito</button>
                     </div>
                 </div>

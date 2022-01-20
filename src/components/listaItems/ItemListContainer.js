@@ -15,12 +15,12 @@ const ItemListContainer = ({ greeting }) => {
     var filteredProducts = [];
 
     const [list, setLista] = useState([]);
+    console.log(list);
 
     useEffect(() => {
         setLista([]);
 
         const productsCollection = collection(db, "products");
-        console.log(productsCollection);
 
         if (category) {
             const customQuery = query(productsCollection, where("category", "==", category))
@@ -43,11 +43,12 @@ const ItemListContainer = ({ greeting }) => {
         }
     }, [category])
 
-    return (
+    return (<>
+        <h4>Productos</h4>
         <div className="items-container">
-            <h4>Productos</h4>
             {list.length > 0 ? <ItemList items={list} /> : <h5>Cargando...</h5>}
         </div>
+    </>
     )
 }
 

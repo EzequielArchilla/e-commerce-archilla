@@ -21,16 +21,18 @@ const ItemDetailContainer = () => {
 
         getDoc(refDoc)
             .then((result) => {
-                setProducto(result.data());
+                setProducto({ id: result.id, ...result.data() });
             })
             .catch((error) => console.log(error))
     }, [id])
 
     return (
-        <div className="items-container">
-            <h5>Producto </h5>
-            <ItemDetail item={producto} />
-        </div>
+        <>
+            <h4>Producto seleccionado</h4>
+            <div className="items-container">
+                <ItemDetail item={producto} />
+            </div>
+        </>
     )
 }
 
