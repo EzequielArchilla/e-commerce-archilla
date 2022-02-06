@@ -2,15 +2,13 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { db } from '../firebase/firebase';
-import { collection, doc, getDoc, query, where } from 'firebase/firestore';
+import { collection, doc, getDoc } from 'firebase/firestore';
 import ItemDetail from './ItemDetail';
 
 
 const ItemDetailContainer = () => {
 
     const { id } = useParams();
-    var filteredProducts = {};
-
 
     const [producto, setProducto] = useState([]);
 
@@ -28,7 +26,7 @@ const ItemDetailContainer = () => {
 
     return (
         <>
-            <h4>Producto seleccionado</h4>
+            <h4 className="font-color-white">Producto seleccionado</h4>
             <div className="items-container">
                 <ItemDetail item={producto} />
             </div>

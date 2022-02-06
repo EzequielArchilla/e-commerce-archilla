@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react'
+import { useEffect } from 'react'
 
 const contexto = createContext()
 
@@ -9,10 +10,14 @@ export const useContexto = () => {
 }
 
 const CustomProvider = ({ children }) => {
+    
+    const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalPriceFromLocalStorage = JSON.parse(localStorage.getItem('totalPrice')) || 0;
+    const totalQuantityFromLocalStorage = JSON.parse(localStorage.getItem('totalQuantity')) || 0;
 
-    const [totalQuantity, setTotalQuantity] = useState(0);
-    const [totalPrice, setTotalPrice] = useState(0);
-    const [cart, setCart] = useState([])
+    const [totalQuantity, setTotalQuantity] = useState(totalQuantityFromLocalStorage);
+    const [totalPrice, setTotalPrice] = useState(totalPriceFromLocalStorage);
+    const [cart, setCart] = useState(cartFromLocalStorage)
 
     const addItem = (item, quantity) => {
         let array = cart.slice();
@@ -23,6 +28,7 @@ const CustomProvider = ({ children }) => {
                     itemA.quantity += quantity;
                 }
             })
+            window.localStorage.setItem(item.id, JSON.stringify(item));
             setCart(array);
             setTotalQuantity(totalQuantity + quantity);
             setTotalPrice(totalPrice + (quantity * item.price));
@@ -37,9 +43,9 @@ const CustomProvider = ({ children }) => {
 
     const removeItem = (itemId) => {
         let array = cart.slice();
-        array.forEach((item) => {
+        array.forEach((item, index) => {
             if (item.id === itemId) {
-                array.pop(item);
+                array.splice(index, 1);
                 setTotalPrice(totalPrice - (item.price * item.quantity));
                 setTotalQuantity(totalQuantity - item.quantity);
             }
@@ -51,11 +57,18 @@ const CustomProvider = ({ children }) => {
         setCart([]);
         setTotalQuantity(0);
         setTotalPrice(0);
+        localStorage.clear();
     }
 
     const isInCart = (id) => {
         return cart.find((item) => item.id === id)
     }
+
+    useEffect(()=>{
+        localStorage.setItem("cart", JSON.stringify(cart));
+        localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
+        localStorage.setItem("totalQuantity", JSON.stringify(totalQuantity));
+    },[cart]);
 
     const contextValue = {
         totalPrice,

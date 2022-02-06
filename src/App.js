@@ -2,7 +2,6 @@ import NavBar from "./components/navBar/NavBar"
 import ItemListContainer from "./components/listaItems/ItemListContainer"
 import ItemDetailContainer from "./components/detailItems/ItemDetailContainer";
 import CustomProvider from "./components/context/CartContext";
-import Error from "./components/Error/Error";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Cart from "./components/cart/Cart";
 

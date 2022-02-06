@@ -8,46 +8,36 @@ import ItemList from './ItemList';
 
 const ItemListContainer = ({ greeting }) => {
 
-    var stock = 5;
-    var initial = 1;
     const { category } = useParams();
-
-    var filteredProducts = [];
-
     const [list, setLista] = useState([]);
 
     useEffect(() => {
         setLista([]);
+        let customQuery;
 
-        const productsCollection = collection(db, "products");
-
-        if (category) {
-            const customQuery = query(productsCollection, where("category", "==", category))
-
-            getDocs(customQuery)
-                .then(({ docs }) => {
-                    setLista(docs.map((doc) => ({ id: doc.id, ...doc.data() })))
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-        } else {
-            getDocs(productsCollection)
-                .then(({ docs }) => {
-                    setLista(docs.map((doc) => ({ id: doc.id, ...doc.data() })))
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
+        if(category){
+            customQuery = query(collection(db, "products"), where("category", "==", category))
+        }else{
+            customQuery = collection(db, "products");
         }
+
+        getDocs(customQuery)
+            .then(({ docs }) => {
+            setLista(docs.map((doc) => ({ id: doc.id, ...doc.data() })))
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        
     }, [category])
 
-    return (<>
-        <h4>Productos</h4>
-        <div className="items-container">
-            {list.length > 0 ? <ItemList items={list} /> : <h5>Cargando...</h5>}
-        </div>
-    </>
+    return (
+        <>
+            <h4 className="font-color-white">Productos</h4>
+            <div className="items-container">
+                {list.length > 0 ? <ItemList items={list} /> : <h5 className="font-color-white">Cargando...</h5>}
+            </div>
+        </>
     )
 }
 

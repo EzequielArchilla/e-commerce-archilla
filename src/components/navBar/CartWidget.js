@@ -5,7 +5,10 @@ const CartWidget = () => {
 
     const { totalQuantity } = useContexto()
 
-    return <><Link to="/cart" className="material-icons">shopping_cart</Link><span>{totalQuantity}</span></>
+    return <>
+    <Link to="/cart" className="material-icons">shopping_cart</Link>
+    <span>{totalQuantity}</span>
+    </>
 }
 
 export default CartWidget
