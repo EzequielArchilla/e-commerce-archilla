@@ -14,7 +14,7 @@
 
 ## Acerca del proyecto
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![Demo](https://github.com/EzequielArchilla/e-commerce-archilla/src/assets/demo.gif)
 
 Este es un e-commerce de venta mayorista y minorista de discos vinilicos. Utiliza como base de datos Firestore. El sitio tiene la posibilidad de filtrar por generos. A la hora de realizar una compra nos solicitara una informacion personal que vendria a simular la carga de datos de facturacion.
 Al realizar una transaccion nos devuelve un codigo que usaremos como identificador.
