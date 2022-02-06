@@ -1,7 +1,5 @@
 <div id="top"></div>
 
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
 <br />
 <div align="center">
   <a href="https://github.com/e-commerce-archilla/src/assets/logo.png">
@@ -50,5 +48,7 @@ Al realizar una transaccion nos devuelve un codigo que usaremos como identificad
 Ezequiel Archilla - ezequiel.a.archilla@gmail.com
 
 Repo: [https://github.com/EzequielArchilla/e-commerce-archilla](https://github.com/EzequielArchilla/e-commerce-archilla)
+
+LinkedIn: [https://www.linkedin.com/in/ezequiel-archilla/](https://www.linkedin.com/in/ezequiel-archilla/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
