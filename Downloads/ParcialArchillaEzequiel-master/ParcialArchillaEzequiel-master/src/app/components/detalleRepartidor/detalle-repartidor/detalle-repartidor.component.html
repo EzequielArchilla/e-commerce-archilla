@@ -1,0 +1,42 @@
+<body>
+    <main>
+        <div class="container py-4">
+            <header class="pb-3 mb-4 border-bottom">
+                <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+                    <span class="fs-4">Repartidores</span>
+                </a>
+            </header>
+
+            <div class="p-5 mb-4 bg-light rounded-3">
+                <div class="container-fluid">
+                    <app-listado-repartidor (detalleProducto)="mostrarDetalle($event)"></app-listado-repartidor>
+                </div>
+            </div>
+
+            <div class="row align-items-md-stretch">
+                <div class="col-md-6">
+                    <div class="h-100 p-5 text-white bg-dark rounded-3">
+                        <app-detalle-repartidor-seleccionado  *ngIf="this.repartidor.nombre != ''" [repartidorSeleccionado]="this.repartidor"></app-detalle-repartidor-seleccionado>
+                    </div>
+                </div>
+                <div class="col-md-6" *ngIf="this.repartidor.nombre != ''">
+                    <div class="h-100 p-5 bg-light border rounded-3">
+                        <span class="text-primary">Pais de origen</span>
+                        <br>
+                        <div *ngIf="this.repartidor != null">
+                            <h6 class="my-0">Nombre: {{repartidor.pais.name.common}}</h6>
+                            <h6 class="my-0">Capital: {{repartidor.pais.capital}}</h6>
+                            <h6 class="my-0">Region: {{repartidor.pais.region}}</h6>
+                            <h6 class="my-0">Sub region: {{repartidor.pais.subregion}}</h6>
+                            <img class="my-2" [src]="repartidor.pais.flags.png" width="80" height="50">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="pt-3 mt-4 text-muted border-top">
+                <p class="mb-1">&copy; Archilla Ezequiel LAboratorio 4 2021</p>
+            </footer>
+        </div>
+    </main>
+</body>

@@ -1,0 +1,11 @@
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-primary">Pais</span>
+</h4>
+<div class="list-group mb-3">
+    <div *ngFor="let pais of paises" class="list-group-item d-flex justify-content-between lh-sm">
+        <input type="radio" name="radioPaises" (click)="valueChange(pais)"  
+            [value]="pais">
+        <h6 class="my-0">{{pais.name.common}}</h6>
+        <img [src]="pais.flags.png" width="80" height="50">
+    </div>
+</div>

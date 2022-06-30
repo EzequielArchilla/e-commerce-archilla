@@ -1,0 +1,69 @@
+
+  <body class="bg-light">
+    
+    <div class="container">
+      <div class="py-5 mb-4 text-center bg-lightBlue">
+        <h2>Complete los datos del repartidor</h2>
+    </div>
+    
+      <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+          <app-tabla-paises (paisOut)="asignarPaisSeleccionado($event)"></app-tabla-paises>
+        </div>
+        <div class="col-md-8 order-md-1">
+          <h4 class="mb-3 text-primary">Informacion basica</h4>
+          <form [formGroup]="repartidorForm" (ngSubmit)="crearRepartidor()" class="needs-validation">
+            <div class="row">
+                <div class="mb-3">
+                    <label for="dni">Dni</label>
+                    <input type="text" class="form-control" id="dni" placeholder="" value=""  formControlName="dni" >
+                  </div>
+              <div class="mb-3">
+                <label for="firstName">Nombre</label>
+                <input type="text" class="form-control" id="firstName" placeholder="" value="" formControlName="nombre">
+                <div class="invalid-feedback" *ngIf="this.repartidorForm.controls['nombre'].errors?.['required'] &&
+                this.repartidorForm.controls['nombre'].touched">
+                El nombre es requerido
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="edad">Edad</label>
+                <input type="number" class="form-control" id="edad" placeholder="" value=""  formControlName="edad" >
+                <div class="invalid-feedback" *ngIf="this.repartidorForm.controls['edad'].errors?.['required'] &&
+                this.repartidorForm.controls['edad'].touched">
+                La edad es incorrecta
+                </div>
+              </div>
+            </div>
+    
+            <div class="mb-3">
+              <label for="capacidadDeTransporte">Capacidad de transporte</label>
+              <input type="email" class="form-control" id="capacidadDeTransporte" formControlName="capacidadDeTransporte">
+            </div>
+
+            <input class="form-check-input" type="checkbox" [value]="this.nuevoRepartidor.unidadPropia" id="unidadPropia">
+            <label class="form-check-label" for="flexCheckDefault">
+                Transporte Propio
+            </label>
+    
+            <div class="mb-3">
+              <label for="pais">Pais</label>
+              <input type="text" class="form-control" id="pais" [value]="this.paisSeleccionado" [attr.disabled]="true">
+            </div>
+    
+            <br>
+            <button type="submit" 
+            class="btn btn-primary btn-block" 
+            [disabled]="repartidorForm.invalid || this.paisSeleccionado == ''">
+            Aceptar
+          </button>
+            <!-- <button class="btn btn-lg btn-success btn-block"  (click)="crearActor()">Crear</button> -->
+          </form>
+        </div>
+      </div>
+    
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; Ezequiel Archilla 2022</p>
+      </footer>
+    </div>
+    

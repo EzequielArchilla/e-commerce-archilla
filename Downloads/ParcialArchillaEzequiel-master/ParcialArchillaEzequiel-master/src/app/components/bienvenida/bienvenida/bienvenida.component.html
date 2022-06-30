@@ -1,0 +1,13 @@
+<body>
+<h2 class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-primary">Datos:</span>
+</h2>
+<div  *ngIf="this.data != ''" class="container text-center">
+    <img [src]="this.data.avatar_url" height="120" width="120">
+<ul class="list-group">
+    <br>
+    <li class="list-group-item">{{this.data.login}}</li>
+    <li class="list-group-item">https://github.com/EzequielArchilla/</li>
+</ul>
+</div>
+</body>
